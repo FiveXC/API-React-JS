@@ -1,0 +1,6 @@
+*{ /* esses códigos dentro do *{} serve para tirar as predefinições que ja veem*/
+margin:0;
+padding:0;
+box-sizing: border-box;
+text-decoration: none;
+}
