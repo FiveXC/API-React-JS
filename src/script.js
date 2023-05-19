@@ -2,36 +2,6 @@ import './styles.css'
 import  TextoBtn from './componentes/scriptReact'
 import React, {useState,useEffect} from 'react'
 
-function App(){
-
-let [objCarta,setObjCarta] = useState()
-   
-useEffect( ()=>{   
-    async function pegandoCarta(){
-      let carta = await baralhoDeCarta()
-      setObjCarta(carta)
-    }   
-    pegandoCarta()
-},[])
-
-return(
-<>
-{
-      objCarta? (
-         <img src = {objCarta.cards[0].image}/>
-        ) : (
-         ""
-        )
-      }
-
-</>  
-
-)
-
-}
-export default App
-
-
 async function baralhoDeCarta(){
   try{
   
@@ -72,6 +42,36 @@ async function baralhoDeCarta(){
       alert("Aconteceu um erro volte mais tarde.")
   }
 }
+
+function App(){
+
+let [objCarta,setObjCarta] = useState()
+   
+useEffect( ()=>{   
+    async function pegandoCarta(){
+      let carta = await baralhoDeCarta()
+      setObjCarta(carta)
+    }   
+    pegandoCarta()
+},[])
+
+return(
+<>
+{
+ objCarta? (
+    <img src = {objCarta.cards[0].image}/>
+ ) : (
+     ""
+   )
+}
+</>  
+
+)
+
+}
+export default App
+
+
   
 
 
