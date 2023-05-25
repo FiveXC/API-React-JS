@@ -24,7 +24,7 @@ async function baralhoDeCarta(){
       let itemDaApi = await fetch(`https://deckofcardsapi.com/api/deck/${baralho.deck_id}/draw/?count=1`);
        
         if (itemDaApi.ok) {    
-          let apiFormatada = itemDaApi.json()          
+          let apiFormatada = await itemDaApi.json()          
           resolve(apiFormatada)
         } 
         else {
