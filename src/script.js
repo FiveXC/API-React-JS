@@ -45,12 +45,18 @@ async function baralhoDeCarta(){
 
 function App(){
 
-let [objCarta,setObjCarta] = useState()
+let [objCarta,setObjCarta] = useState("Carregando...")
    
 useEffect( ()=>{   
     async function pegandoCarta(){
       let carta = await baralhoDeCarta()
-      setObjCarta(carta)
+      if(carta){
+        setObjCarta(carta)
+      }
+      else{
+        setObjCarta("Aconteceu um erro volte mais tarde.")
+      }
+  
     }   
     pegandoCarta()
 },[])
@@ -58,10 +64,10 @@ useEffect( ()=>{
 return(
 <>
 {
- objCarta? (
+ typeof objCarta === "object" ? (
     <img src = {objCarta.cards[0].image}/>
  ) : (
-     ""
+     <p>{objCarta}</p>
    )
 }
 </>  
